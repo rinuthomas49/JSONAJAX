@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VOLIM</title>
+    <style type="text/css">
+    
+    body
+    {
+        margin:0px;
+        background-color:#f26724;
+        background-image:url(image/background.jpg);
+        color:#f9fcf5;
+        font-family:Arial, Helvetica, sans-serif;
+    }
+</style>
+    <script>
+        function load()
+        {
+            let url=" http://time.jsontest.com ";
+            var request;
+            request=new XMLHttpRequest();
+            request.onreadystatechange=function()
+            {
+                if(request.readyState==4)
+                {
+                    var obj=JSON.parse(request.responseText);
+                    document.getElementById("date").innerHTML=obj.date;
+                    document.getElementById("time").innerHTML=obj.time;
+                }
+            };
+            request.open("GET",url,true);
+            request.send();
+        }
+    </script>
+</head>
+<body>
+
+    Date:<span id="date"></span><br>
+    Time:<span id="time"></span><br>
+    <button type="button" onclick="load()">Load Information</button>
+ <img src="images/volim.jpg">
+</body>
+</html>
